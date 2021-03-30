@@ -1,0 +1,9 @@
+HOST = ''  
+PORT = 5000
+
+WORD_LIMIT = 10
+
+SUCCESS = 200
+ERROR = 500
+
+MSG_FILE_NOT_FOUND = 'Error: File not found.'
