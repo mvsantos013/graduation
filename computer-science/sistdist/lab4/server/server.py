@@ -1,4 +1,5 @@
 import sys
+import os
 import socket
 import select
 import threading
@@ -170,7 +171,7 @@ class Server():
             if(user_id in users and users[user_id]['sock']):
                 users[user_id]['sock'].send(encode_message(None, ap.MSG_TYPE_BAN))
                 users[user_id]['sock'].close()
-                db.logout_user()
+                db.logout_user(user_id)
                 print('User kicked successfuly.')
             else:
                 print('User does not exist or is not online.')
@@ -180,7 +181,7 @@ class Server():
     def exit(self):
         logger.info('Shutting down server...')
         logger.info('Server is now offline.')
-        sys.exit()
+        os._exit(0)
 
 server = Server()
 server.start()
